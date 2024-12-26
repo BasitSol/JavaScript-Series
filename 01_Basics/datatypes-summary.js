@@ -45,4 +45,32 @@ console.log(typeof anotherId);  // It will Return the symbol type in the Console
 //The Non primitive datatypes are the function type except a Function itself it is an "object function" type
 
 
+// ***********************************Memory in a JavaScript*********************************//
+// 1) Stack Memory => primitive DataType => call by value
+// 2) Heap Memory => Non-primitive DataType => call by reference
+
+let myYoutubeName = "Basit"
+
+let anotherName = myYoutubeName
+anotherName = "ali"
+console.log(myYoutubeName);                // call by value example so it will not change in the actual
+console.log(anotherName);
+
+let userOne = {
+    email:"user@google.com",
+    id:"#123"
+}
+                                          // Call by refernce example 
+let userTwo = userOne 
+
+userTwo.email = "basit@google.com"
+
+console.log(userOne.email);
+console.log(userTwo.email);             // so it will change in the original and it got the Actual 
+                                         // reference 
+                                         // instead of a copy 
+
+
+
+
 
