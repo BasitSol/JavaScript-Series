@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM MANIP</title>
+</head>
+<body style="background-color: #212121; color: #fff ;">
+    
+</body>
+<script>
+    // Create a div element
+    const div = document.createElement('div')  // You can create any of the element you want like h1,h2,p,span,div etc.
+    console.log(div);
+    // How to add the properties to the div element
+    div.className = 'main'
+    div.id = Math.round(Math.random() * 10 + 1)  // Just for fun we set the random id to the div element
+    div.setAttribute('title','generated title') // You can set any attribute to the element
+    div.style.backgroundColor = 'green'  // You can set the style of the element
+    div.style.padding = '10px' 
+
+    // ALl of the above created div is in the memory and doesnt render and show in the page or browser. so how we can attach it to the page
+    //div.innerText = 'This is the generated div element'  => you can use this as well to add the text to the div element
+
+    // People prefer to use the setAttribute rather than the innertext coz it overwrites the previous content
+    const addText = document.createTextNode("This is the generated div element")
+    div.appendChild(addText)  // => you can use this to add the text to the div element / so both approaches are good if you want to use
+    // now finally attack the div to the doc body 
+    document.body.appendChild(div)
+    
+</script>
+</html>
