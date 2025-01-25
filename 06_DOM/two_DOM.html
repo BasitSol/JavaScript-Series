@@ -1,0 +1,97 @@
+<!-- NOW WE ARE GOING TO LEARN ABOUT THE DOM SELECTORS -->
+how we can acces the class or the id of the html?
+
+1)document.getElementById('title').id 
+this will allow us to make acces the object having id </title>
+
+2)document.getElementById('title').className
+we can also acces the class attribute(if any)through the id . but make sure yiu write the className instead of
+just class otherwise it wont work. 
+
+3)document.getElementById('title').getAttribute('class')
+you can also get or access the class or id attribute using this and passing the class just.
+
+4)document.getElementById('title').setAttribute('class', 'test') or ('class', 'test heading')
+here i can set the name of the class attribute to test so it depend on me what name i want to give and 
+i can give as much names as i want
+
+5)const title = document.getElementById(title)
+here i stored the value in the title variable
+
+6)title.style.backgroudColor = "black"
+i can also change the color, padding , border , border radius of this object through .style
+
+7)title.textContent , .innerHTML, .innerText
+they all use to bring or access the content of the html object 
+but are they are same ? nooo
+the difference in these three are 
+
+Difference betwen the textContent and a innerText
+innerText shows you the text that is actually visible 
+textContent gives you that text as well that you have been hide using the css property (Will give you the Hidden text)
+
+.innerHTML will give you the complete html value suppose that
+<h1>This is the best <span>Javascript series ever</span></h1>
+
+now innerHTML will give you complete HTML Content along with the span tag and its content just like complete line
+indirectly innerHTML supports the html tags as well and  inerText, textContent dont
+
+document.querySelector('h1')
+this will bring you the first h1 tag content
+
+document.querySelector('#title')   // This is to Select the id and bring it  you can also select class attribute like .title 
+
+document.querySelector('input[type="password"]')  you can also select the input field having the type password
+you can use this query selector to acces any of the content based on the css selectors 
+
+what if you want to change the first li one of the ul into green as there are 3 li's
+const ul = document.querySelector('ul')
+
+ul.querySelector('li')
+ 
+save it another variable
+const turnGreen = ul.querySelector('li')
+
+now turnGreen.style.backgroudColor='green' now the first li converted into green backgroudColor
+now thats how you can do any kind of changings using the css properties
+
+
+// **************** querySelectoAll ***********************
+ 
+when you use the querySelectorAll for extracting all the list it will give you result in a node list
+
+now what's the differnce in node list and array or normal list 
+
+actually nodelist and html collection are not actually pure array 
+
+In node list you will get the foreach but you wont get the feature "map" which is by-default available in arrays
+
+now lets suppose 
+const mynodeli = document.querySelectorAll('li') => node:['li','li','li']
+mynodelist.style.color = 'green'   => error you cant change use it like a pure array and apply properties
+yes it's an array but its not a pure array
+
+Now how we can do this thing (changing the color or applying the properties)?
+mynodeli[0].style.color = 'red' => now you will be able to change the color of the first li
+
+Key point :
+if you want to apply the map so first you need to convert it into array or list and then use the map fucntionaity
+
+key point:
+when you use select the by class name what would happen then
+
+const classList = document.getElementByClass('li')
+classList.forEach((li)=>{}) // Error
+
+now when you select the element using the class it give you the HTML collection which is again different fromthe nodelist and simple list(array)
+so you cant apply the map and forEach fucntionalities here 
+ 
+now what's the solution for this ?
+list when you convert node list into list similarly you need to convert the html Collection into list first 
+
+methods to convert :
+Array.from(classList)  => now it will give you an array, now you can apply all those properties 
+// Don't Forget to Always keep the first letter capital like => Array.from()
+
+
+
