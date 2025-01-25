@@ -1,0 +1,49 @@
+// Here we are going to discuss about the creationand deletion of the dom elements
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Practise</title>
+</head>
+<body style="background-color: black; color: white;">
+   <ul class="language">
+    <li>JavaScript</li>
+   </ul>
+</body>
+<script>
+    //  function addlanguage(langName){
+    // const li = document.createElement('li')
+    // li.innerHTML = `${langName}                            // This is not an optimal approach
+    // document.querySelector('.language').appendaChild(li)
+    // language('Python')
+
+    function addOptiLanguage(langName){
+        const li = document.createElement('li')               // This is am optimal approach
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('Python')
+    addOptiLanguage('Java')
+    addOptiLanguage('C++')
+
+    // Edit
+
+    const secondLang = document.querySelector('li:nth-child(2)')
+    //secondLang.innerHTML = 'typescript'    // this Approach works but its not optimal
+    const newLi = document.createElement('li')
+    newLi.textContent = 'TypeScript'
+    secondLang.replaceWith(newLi)
+    // One more edit example
+
+    const FirstLang = document.querySelector('li:first-child')
+    FirstLang.outerHTML = '<li>RUBY</li>'
+    
+    // Remove
+    const LastLang = document.querySelector('li:last-child')
+    LastLang.remove()
+
+</script>
+
+</html>
