@@ -1,0 +1,133 @@
+1. Types of Events
+Events are actions that occur in the browser. Common types include:
+
+Mouse Events: click, mouseover, mouseout, mousedown, mouseup.
+
+Keyboard Events: keydown, keyup, keypress.
+
+Form Events: submit, change, focus, blur.
+
+Window Events: load, resize, scroll.
+
+Example:
+
+javascript
+Copy
+button.addEventListener('click', () => console.log('Clicked!'));
+input.addEventListener('keydown', (e) => console.log(e.key));
+window.addEventListener('load', () => console.log('Page loaded!'));
+
+
+2. timestamp
+Indicates when the event occurred (in milliseconds, typically since page load).
+
+Example:
+
+javascript
+Copy
+document.addEventListener('click', (e) => {
+  console.log(`Event time: ${e.timeStamp}ms`);
+});
+
+
+3. defaultPrevented
+A boolean indicating if e.preventDefault() was called to cancel the default browser action.
+
+Example:
+
+javascript
+Copy
+link.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log(e.defaultPrevented); // true
+});
+
+4. target
+The element that triggered the event (e.g., the button you clicked).
+
+Example:
+
+javascript
+Copy
+document.body.addEventListener('click', (e) => {
+  console.log(e.target); // Logs the actual clicked element
+});
+
+
+5. toElement
+(Deprecated) In older browsers, used for mouse events to indicate the element the mouse is moving to (use relatedTarget instead).
+
+Example:
+
+javascript
+Copy
+div.addEventListener('mouseout', (e) => {
+  console.log(e.relatedTarget); // Modern alternative to toElement
+});
+
+6. srcElement
+(Deprecated) Older alias for target (used in Internet Explorer).
+
+Example:
+
+javascript
+Copy
+button.addEventListener('click', (e) => {
+  const target = e.target || e.srcElement; // Fallback for old browsers
+});
+
+7. currentTarget
+The element to which the event listener is attached.
+
+Example:
+
+javascript
+Copy
+div.addEventListener('click', function(e) {
+  console.log(e.currentTarget); // Always the div, even if a child is clicked
+});
+
+8. clientX & clientY
+Mouse coordinates relative to the viewport (browser window).
+
+Example:
+
+javascript
+Copy
+document.addEventListener('click', (e) => {
+  console.log(`Viewport position: ${e.clientX}, ${e.clientY}`);
+});
+
+9. screenX & screenY
+Mouse coordinates relative to the entire screen.
+
+Example:
+
+javascript
+Copy
+document.addEventListener('click', (e) => {
+  console.log(`Screen position: ${e.screenX}, ${e.screenY}`);
+});
+
+10. altKey, ctrlKey, shiftKey
+Booleans indicating if the Alt, Ctrl, or Shift keys were pressed during the event.
+
+Example:
+
+javascript
+Copy
+document.addEventListener('keydown', (e) => {
+  if (e.altKey && e.key === 'a') console.log('Alt + A pressed!');
+});
+
+11. keyCode
+(Deprecated) Numeric code of the pressed key (use key or code instead).
+
+Example:
+
+javascript
+Copy
+document.addEventListener('keydown', (e) => {
+  console.log(e.key); // 'Enter', 'A', etc.
+  console.log(e.code); // 'KeyA', 'Enter', etc.
+});
