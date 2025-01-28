@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events HTML</title>
+</head>
+<body style = "background-color: #414141; color: aliceblue;">
+    <h2>Amazing Image</h2>
+    <div>
+        <ul id="images">
+            <li><img src="Gir.jpg" alt="" width="200px" id="girl"></li>
+            <li><img src="PhotShott.jpg" alt="" width="200px" id="capture"></li>
+            <li><img src="Scneart.jpg" alt="" width="200px" id="scenary"></li>
+            <li><img src="Waterfall.jpg" alt="" width="200px" id="Waterfall"></li> // onclick="alert('owl')"=> There is nothing wrong if we do like this but this approach is not good
+            when your images are too many and when it will scale up. So Avoid using injecting in HTMl in js . but in react its diff coz it's scalable code in react
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // Every Event in the JS runs in a sequential manner as JS is a sequentially executed language. but there are some exceptions
+    // so we will be discussing 
+    // 1) Browser events (exception) they invoke on some activity like mouse press key press and drag to some thing etc
+    // second approach to use the onclick operations in the html tags is ;
+    // document.getElementById('scenary').onclick = function(){
+    //     alert('scenary clicked');
+    // } // There is nothing wrong if we do like this but this approach is not good . There might be some problem in onCLick events 
+    // // coz you dont get alot of information so you should use event listeners. coz event listener not only give you the onclick functionality
+    // // but also give you ability of propagation. it wont give you much features .
+
+    // There are another approach => attachEvent() it use in the early times
+    // In JQuery - on // was used 
+    // Third and the best approach for this                          // This e is an event object
+    // document.getElementById('scenary').addEventListener('click',function(e){
+    //     console.log(e);
+        
+    // },false)   // This false is default
+
+    // Things to remember or study
+    // 1) types of events, timestamp, defaultPrevented , target, toElement, srcElement, currentTarget,clientX,Y, screenX,Y
+    // altKey,ctrlKey, shiftKey, KeyCode
+    // Now lets talk about the
+    // 2) event propagation
+    // there are two context of event propagation 1)event bubling and event capturing
+    //default which is false is an event bubling it use in the market
+    
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+        
+    // },false)
+
+    // document.getElementById('Waterfall').addEventListener('click', function(e){
+    //     console.log("clicked inside the waterfall");
+    //     e.stopPropagation()  // Its like the preventDefault . in this way your event wont go buble up
+    // },false)
+
+    // // Its actually the bubling up concept which go like from downward to upward . so yeah when we clicked on the waterfall image 
+    // // first it prints the waterfall then prints the clicked inside the ul . this event propagation is also called bubling up
+    // /// but there is another concept called capturing up when we use the true as 3 parameter in the addEventListener() method it will
+    // // go from upward to downward . so yeah when we clicked on the waterfall image if first shows the clicked on the ul then shows the waterfall
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    //     console.log('Google Clicked');
+        
+    // },false)
+
+    // Project style learning that we want to remove complete li
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.parentNode);  // it shows that from which target this event is actually occur . this actually shows up its parent as well
+        // like here the parent is li and child is img
+        if(e.target.tagName === 'IMG'){  // coz it will allow us to remove using the tagaName Specifically other when you click on the one li whole li's got removed
+        let removeIt = e.target.parentNode 
+        removeIt.remove()  // => this is the first approach
+        }
+        //removeIt.parentNode.removeChild(removeIt)  // => this is the second approach
+    },false)
+    
+</script>
+</html>
