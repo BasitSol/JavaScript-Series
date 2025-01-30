@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApiRequest</title>
+</head>
+<body style="background-color: #212122;">
+ // what is api ?
+// Api is a taking language between 2 languages front end and backened they can be any sort of 2 sides .
+// JSON Formatter:
+//It helps you to format, evaluate and understand the complex Api structures
+// How world used to work in past and get the API requests 
+// XMLHTTP Request : Its about the Asynchronous javaScript adn XML. it include state in everything . After All nowadays still the state works
+// like in React but now calling state by through numbers are less (calling by numbers)
+
+</body>
+<script>
+    // How AJAX request works 
+    // First of all you create an object
+    const requestUrl = 'http://api.github.com/users/BasitSol'
+    const xhr = new XMLHttpRequest() // XMLHttpRequest is a object that is used to send HTTP request and receive HTTP response data
+    xhr.open('GET', requestUrl, true) // open method is used to send HTTP // Open method doesnt call itself 
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){    // To Detect the state of the request      
+            //const data = this.responseText
+            //console.log(data.followers);  // Will give the Undefined but why ? check it out the type of the data then 
+            //console.log(typeof data); // The type of the data is string NOTE : whenever you get the response from the server it will always be string(most Times)
+            // So better convert it
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data);  // Now it will show you that in object and show you the followers 
+            console.log(data.followers);
+        }
+            
+        
+    } // It Continously monitor the state of the request
+    //console.log(xhr.readyState)  // It will change state from 0 to 1 only once 
+    
+    xhr.send()  // send method is used to actually call the open method and send the request to the server
+
+
+    // Is console.log is directly the part of the JS ? No even document. method is not the core part of the JS
+    // console.log is actually a debugging tool (Dev tool of your browser)
+    // It is inject by runtime environment of JS (Browser or Node) // Js run by environment browser or Node
+    // Node.js is also an implementation of V8 Engine which is one of engine that actually run JS . 
+    // v8 engine gives you all the debugging tools and apis sccess so you can work well
+    //console.log is also available there (JS runtime gives you all these tings)
+</script>
+</html>
