@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous Language</title>
+</head>
+<body>
+    <h1>Javascript Async</h1>
+    <button id="stop">Stop</button>
+    </body>
+<script>                  // Must read about the clearInterval and clearSettime
+    // const sayBasit = function() {
+    //     console.log('Basit');
+        
+    // }      // You can give the reference as well but make sure you didn't use () at the end
+    // setTimeout(sayBasit, 2000)         // This is a method but ut also call an api as well // Handler is actually a call back function
+    
+    const changeText = function(){
+    document.querySelector('h1').innerHTML = 'Best JS series'
+    }
+    const changeMe = setTimeout(changeText, 2000)
+
+    // There is not a stop here you need to know that i can stop the timer or event.
+    //ClearTimeOut  it wont work like ClearTimeOUt() it need a reference that which time out you want to stop or remove 
+    // clearTimeout(changeMe)  
+    /// we should do that in some event 
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeMe)    // Now here it will stop changing the name of the h1 tag
+        console.log('stopped');   
+    })
+
+</script>
+</html>
