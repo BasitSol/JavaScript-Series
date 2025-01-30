@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous Language</title>
+</head>
+<body>
+    <h1>Javascript Async</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+    </body>
+<script>                  
+    // We will we doing another method setInterval() as this involve a handler and timeOut as well but its working is little diff
+    const sayDate = function(str){
+        console.log(str,Date.now());
+        console.log('Started Now');
+        
+    }
+    //const sayStop = setInterval(sayDate, 1000, 'hi buddy') // there exist 3rd parameter as well where you can pass the argument like i did the string
+    // now how to stop this setInterval as well ? yes by using clearInterval()
+    //clearInterval(sayStop)
+    let sayStop
+    document.querySelector('#start').addEventListener('click',function(){
+        sayStop = setInterval(sayDate, 1000, 'hi buddy')
+    })
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(sayStop)
+        console.log('Stopped Now');
+    })
+    
+</script>
+</html>
