@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    
+    function ClickHandler(color){
+        return function(){
+            document.body.style.backgroundColor = `${color}` // Now here the color has an access inside so complete lexical scope would return 
+                                                            // not just a function 
+        }
+    }
+    document.getElementById('orange').onclick = ClickHandler('orange')    // there is actually a problem coz i was expecting the function in return 
+                                                                         // But you execute the function  
+    document.getElementById('green').onclick = ClickHandler('green')
+</script>
+</html>
